@@ -28,7 +28,7 @@ const LoginPage = () => {
     Cookies.set('teacherId', data.teacherId, { expires: 1 }); // Expires in 1 day
     login();
     navigate('/home');
-}
+
 
             } else {
                 const data = await response.text(); // If the response isn't JSON
