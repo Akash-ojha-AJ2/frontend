@@ -14,30 +14,33 @@ const Navbar = () => {
 
 const handleLogout = async () => {
   try {
-    // Send a logout request to the server
     const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
       method: 'POST',
       headers: {
-              'Content-Type': 'application/json',
-               'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Send token for auth
+      },
       credentials: 'include', // Include cookies in the request
     });
 
     if (response.ok) {
       // Clear cookies or local storage
-      Cookies.remove('token', { path: '/' });
-      Cookies.remove('teacherId', { path: '/' });
+      localStorage.removeItem('token'); // Clear token from localStorage
+      localStorage.removeItem('teacherId'); // Clear teacherId if used
+      Cookies.remove('token', { path: '/' }); // Clear token cookie
+      Cookies.remove('teacherId', { path: '/' }); // Clear teacherId cookie
 
-      // Redirect to the login page
-      window.location.href = '/login';
+      // Redirect to login page
+      navigate('/login');
     } else {
-      console.error('Failed to logout');
+      const errorData = await response.json();
+      console.error('Logout failed:', errorData.message || 'Unknown error');
     }
   } catch (error) {
     console.error('Error during logout:', error);
   }
 };
+
 
 
   return (
