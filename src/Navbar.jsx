@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
+      const response = await fetch('https://attendance-v2dt.onrender.com/api/teachers/logout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
