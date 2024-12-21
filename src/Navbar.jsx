@@ -17,6 +17,10 @@ const handleLogout = async () => {
     // Send a logout request to the server
     const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
       method: 'POST',
+      headers: {
+              'Content-Type': 'application/json',
+               'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
       credentials: 'include', // Include cookies in the request
     });
 
