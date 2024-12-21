@@ -24,8 +24,12 @@ const LoginPage = () => {
             
 
             if (response.ok) {
-                login();
-                navigate('/home');
+    const data = await response.json(); // Extract teacherId from response
+    Cookies.set('teacherId', data.teacherId, { expires: 1 }); // Expires in 1 day
+    login();
+    navigate('/home');
+}
+
             } else {
                 const data = await response.text(); // If the response isn't JSON
                 setError(data || 'Login failed. Please try again.');
