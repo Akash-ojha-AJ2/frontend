@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './homepage.css';
 import image from './assets/home.jpg.jpg'; // Adjust path if needed
 
+import Cookies from 'js-cookie';
+
 const AddStudent = () => {
+  const teacherId = Cookies.get('teacherId');
+
+  if (!teacherId) {
+    window.location.href = '/login'; // Redirect to login if not authenticated
+    return null;
+  }
 
 
   return (
