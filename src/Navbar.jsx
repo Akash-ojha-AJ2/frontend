@@ -8,7 +8,30 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
+    try {
+      const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token in header
+        },
+        credentials: 'include',
+      });
 
+      if (response.ok) {
+        // Clear token and redirect to login
+        localStorage.removeItem('token');
+        localStorage.removeItem('teacherId');
+        Cookies.remove('token', { path: '/' });
+        Cookies.remove('teacherId', { path: '/' });
+        navigate('/login'); // Redirect to login page
+      } else {
+        const errorData = await response.json();
+        console.error('Logout failed:', errorData.message || 'Unknown error');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
   };
 
   return (
@@ -41,4 +64,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
