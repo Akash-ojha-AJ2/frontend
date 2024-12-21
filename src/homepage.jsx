@@ -7,10 +7,10 @@ import Cookies from 'js-cookie';
 const AddStudent = () => {
   const teacherId = Cookies.get('teacherId');
 
-  if (!teacherId) {
-    window.location.href = '/login'; // Redirect to login if not authenticated
-    return null;
-  }
+if (!teacherId) {
+  return <Navigate to="/login" replace />;
+}
+
 
 
   return (
