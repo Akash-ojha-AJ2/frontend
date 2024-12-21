@@ -9,12 +9,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { logout } = useAuth(); // Get the logout function from AuthContext
 
- const handleLogout = () => {
-  // Remove the teacherId cookie
-  Cookies.remove('teacherId');
-  // Optionally, you can redirect to the login page after logging out
-  window.location.href = '/login';
-};
+  const handleLogout = () => {
+    Cookies.remove('teacherId');
+    navigate('/login');
+  };
 
 
   return (
