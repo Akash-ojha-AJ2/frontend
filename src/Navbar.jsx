@@ -1,53 +1,43 @@
 import React, { useState } from 'react';
-import "./Navbar.css";
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext'; // Assuming you have AuthContext for managing login state
- import Cookies from 'js-cookie';
-
+import Cookies from 'js-cookie';
+import './Navbar.css';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { logout } = useAuth(); // Get the logout function from AuthContext
 
- 
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token in header
+        },
+        credentials: 'include',
+      });
 
-const handleLogout = async () => {
-  try {
-    const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Send token for auth
-      },
-      credentials: 'include', // Include cookies in the request
-    });
-
-    if (response.ok) {
-      // Clear cookies or local storage
-      localStorage.removeItem('token'); // Clear token from localStorage
-      localStorage.removeItem('teacherId'); // Clear teacherId if used
-      Cookies.remove('token', { path: '/' }); // Clear token cookie
-      Cookies.remove('teacherId', { path: '/' }); // Clear teacherId cookie
-
-      // Redirect to login page
-      navigate('/login');
-    } else {
-      const errorData = await response.json();
-      console.error('Logout failed:', errorData.message || 'Unknown error');
+      if (response.ok) {
+        // Clear token and redirect to login
+        localStorage.removeItem('token');
+        localStorage.removeItem('teacherId');
+        Cookies.remove('token', { path: '/' });
+        Cookies.remove('teacherId', { path: '/' });
+        navigate('/login'); // Redirect to login page
+      } else {
+        const errorData = await response.json();
+        console.error('Logout failed:', errorData.message || 'Unknown error');
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
     }
-  } catch (error) {
-    console.error('Error during logout:', error);
-  }
-};
-
-
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        {/* Logo */}
-        <div className='logo'>
+        <div className="logo">
           <h1>MARK</h1>
           <h2>MY ATTENDANCE</h2>
         </div>
@@ -56,14 +46,12 @@ const handleLogout = async () => {
         </button>
       </div>
       <div className={`navbar-right ${menuOpen ? 'show' : ''}`}>
-        {/* Navbar Links */}
         <ul className="navbar-links">
           <li><Link to="/home" className="navbar-link">Home</Link></li>
           <li><Link to="/addStudent" className="navbar-link">Add Student</Link></li>
           <li><Link to="/viewstudentform" className="navbar-link">View Student Data</Link></li>
           <li><Link to="/attendance" className="navbar-link">Attendance</Link></li>
           <li><Link to="/delete-attendance" className="navbar-link">Delete Attendance</Link></li>
-          {/* Logout Button inside the list */}
           <li>
             <button onClick={handleLogout} className="navbar-link logout-button">
               Logout
@@ -76,3 +64,4 @@ const handleLogout = async () => {
 };
 
 export default Navbar;
+
