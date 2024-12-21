@@ -17,6 +17,7 @@ const DeleteAttendanceResult = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add the Authorization header
           },
           credentials: 'include', // Ensure the session or token is sent
         });
@@ -44,6 +45,7 @@ const DeleteAttendanceResult = () => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add the Authorization header
         },
         credentials: 'include', // Send cookies or authentication token
       });
@@ -70,6 +72,7 @@ const DeleteAttendanceResult = () => {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add the Authorization header
         },
         credentials: 'include',
       });
@@ -147,3 +150,4 @@ const DeleteAttendanceResult = () => {
 };
 
 export default DeleteAttendanceResult;
+
