@@ -1,0 +1,204 @@
+.data{
+  margin-top: 100px;
+}
+.table-container {
+  display: flex;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.fixed-columns {
+  flex: 0 0 auto;
+  width:1200px; /* Adjust width as needed for fixed columns */
+}
+
+.scrollable-columns {
+  overflow-x: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Forces fixed layout and respects column widths */
+}
+
+
+th{
+  background-color: white;
+}
+
+td{
+  background-color: rgb(205, 205, 6);
+  
+}
+
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #0e0e0e;
+}
+
+.attendance-present {
+  background-color: green;
+  color: white;
+}
+
+.attendance-absent {
+  background-color: red;
+  color: white;
+}
+
+.attendance-no-record {
+  background-color: grey;
+  color: white;
+}
+
+/* Set the width for the date columns */
+.scrollable-columns th, .scrollable-columns td {
+  width: 120px; /* Increase width of the date columns */
+}
+
+
+
+
+
+
+@media (max-width: 700px) {
+  /* Make the whole table container horizontally scrollable */
+  .table-container {
+    font-size: 14px;
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll for the whole table container */
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  /* Fixed columns (serial, name, email, etc.) */
+  .fixed-columns {
+    flex: 0 0 auto; /* Prevent this section from stretching */
+    width: 1200px; /* Adjust width as needed for fixed columns */
+    display: inline-block;
+    overflow-x: hidden; /* Disable scroll here */
+  }
+
+  /* Scrollable columns (date columns and attendance data) */
+  .scrollable-columns {
+    display: inline-block;
+    flex: 1;
+    overflow-x: scroll; /* Enable horizontal scrolling for date columns */
+    min-width: 100%; /* Ensure it takes full width */
+    white-space: nowrap; /* Prevent wrapping inside the scrollable area */
+  }
+
+  /* Make table take full width and use fixed layout */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensure column width is fixed */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+
+  .attendance-present {
+    background-color: green;
+    color: white;
+  }
+
+  .attendance-absent {
+    background-color: red;
+    color: white;
+  }
+
+  .attendance-no-record {
+    background-color: grey;
+    color: white;
+  }
+
+  /* Set the width for date columns to make them scrollable */
+  .scrollable-columns th, .scrollable-columns td {
+    width: 120px; /* Width of date columns */
+  }
+
+  /* Ensure both tables align properly */
+  .fixed-columns table, .scrollable-columns table {
+    width: 100%; /* Ensure the tables have the same width */
+  }
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+  /* Make the whole table container horizontally scrollable */
+  .table-container {
+    font-size: 14px;
+    display: flex;
+    overflow-x: auto; /* Horizontal scroll for the whole table container */
+    max-width: 100%;
+    margin: 20px 0;
+  }
+
+  /* Fixed columns (serial, name, email, etc.) */
+  .fixed-columns {
+    flex: 0 0 auto; /* Prevent this section from stretching */
+    width: 1200px; /* Adjust width as needed for fixed columns */
+    display: inline-block;
+    overflow-x: hidden; /* Disable scroll here */
+  }
+
+  /* Scrollable columns (date columns and attendance data) */
+  .scrollable-columns {
+    display: inline-block;
+    flex: 1;
+    overflow-x: scroll; /* Enable horizontal scrolling for date columns */
+    min-width: 100%; /* Ensure it takes full width */
+    white-space: nowrap; /* Prevent wrapping inside the scrollable area */
+  }
+
+  /* Make table take full width and use fixed layout */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensure column width is fixed */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+
+  .attendance-present {
+    background-color: green;
+    color: white;
+  }
+
+  .attendance-absent {
+    background-color: red;
+    color: white;
+  }
+
+  .attendance-no-record {
+    background-color: grey;
+    color: white;
+  }
+
+  /* Set the width for date columns to make them scrollable */
+  .scrollable-columns th, .scrollable-columns td {
+    width: 120px; /* Width of date columns */
+  }
+
+  /* Ensure both tables align properly */
+  .fixed-columns table, .scrollable-columns table {
+    width: 100%; /* Ensure the tables have the same width */
+  }
+}

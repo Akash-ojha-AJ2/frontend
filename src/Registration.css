@@ -1,0 +1,164 @@
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .registration {
+    background: linear-gradient(to right, #3a7d44, #a6bf3a);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Left Section */
+  .split.left {
+    background: #01333d;
+    color: white;
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .split.left h1 {
+    color:white;
+    margin-bottom: 20px;
+  }
+  
+  .split.left p {
+    margin-bottom: 30px;
+  }
+  
+  .split.left .sign-in-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .split.left .sign-in-btn:hover {
+    background: white;
+    color: #01333d;
+  }
+  
+  /* Right Section */
+  .split.right {
+    flex: 2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .split.right h1 {
+    margin-bottom: 20px;
+  }
+  
+  .social-icons button {
+    background: #f2f2f2;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .split.right p {
+    margin: 15px 0;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .register-form input,
+  .register-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .register-btn {
+    background: #d0c400;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .register-btn:hover {
+    background: #a39800;
+  }
+  
+
+
+
+  @media (max-width: 700px) {
+    .registration {
+     
+      padding: 20px;
+      height: auto; /* Adjust height for smaller screens */
+    }
+  
+    .container {
+      height: 85vh;
+      overflow-y: scroll;
+      display: flex;
+      flex-direction: column;
+      padding: 20px; /* Add padding for spacing */
+    }
+  
+    .container h1 {
+      font-size: 20px; /* Adjust font size */
+      margin-bottom: 15px;
+    }
+  
+    .social-icons button {
+      font-size: 14px; /* Adjust button size */
+      padding: 8px; /* Smaller padding for buttons */
+      margin: 3px;
+    }
+  
+    .register-form input,
+    .register-form textarea {
+      width: 280px;
+      padding: 10px; /* Adjust padding for inputs */
+      font-size: 13px; /* Slightly smaller font */
+    }
+  
+    .register-btn {
+      font-size: 14px; /* Adjust button font size */
+      padding: 10px; /* Smaller button padding */
+    }
+  
+    .sign-in-option button {
+      font-size: 13px; /* Adjust font size */
+      padding: 8px; /* Adjust button padding */
+    }
+  }

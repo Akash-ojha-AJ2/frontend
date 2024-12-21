@@ -1,0 +1,158 @@
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Other existing styles for body and html */
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #3a7d44, #a6bf3a);
+}
+
+/* General styles for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #094b03;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px; /* Adjust the size of your logo */
+  margin-right: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right ul {
+  display: flex; /* To display the links in a row */
+  list-style-type: none; /* Remove bullet points from the list */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-link {
+  color: white; /* Set link color to white */
+  margin-right: 20px; /* Space between links */
+  text-decoration: none;
+  font-size: 16px; /* Set font size to match the logout button */
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+  color: #04ff3e; /* Optional: Change color on hover to orange */
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px; /* Set the font size of the logout button */
+  margin-left: 20px; /* Space between logout button and the last link */
+}
+
+.logo{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.logo h1{
+  color: #04ff3e;
+  font-size: 20px;
+  height: 1px;
+  padding-right: 120px;
+}
+
+.logo h2{
+
+  font-size: 20px;
+
+}
+
+.logout-button:hover {
+  color: #04ff3e; /* Change color on hover */
+}
+
+/* Content area to avoid overlap with navbar */
+.content {
+  margin-top: 60px;
+}
+
+/* Responsive Styles for small screens (max-width 700px) */
+@media (max-width: 700px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Hide navbar links on mobile */
+  .navbar-right {
+    display: none; /* Hide links initially */
+    flex-direction: column;
+    width: 100%;
+    background-color: #094b03;
+    position: absolute;
+    top: 60px; /* Just below the navbar */
+    left: 0;
+    padding: 10px 0;
+  }
+
+  /* Show navbar links when toggled */
+  .navbar-right.show {
+    display: flex;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar-link {
+    display: flex;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Menu Toggle button styling */
+  .menu-toggle {
+    
+    display: block;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Place it at the top right corner */
+  }
+
+  .menu-toggle:hover {
+    color: #04ff3e;
+  }
+}

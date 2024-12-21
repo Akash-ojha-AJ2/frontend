@@ -1,0 +1,113 @@
+/* Container for the form */
+.add {
+  margin-top: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.form-containerr {
+  width: 100vw;
+  max-width: 1200px; /* Limit max width */
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Success and error message styles */
+.message {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: .8;
+}
+
+.close-btn:hover {
+  color: #ccc;
+}
+
+/* Form styles */
+.student-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input,
+select {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Button styles */
+.submit-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #a2ce10;
+  color: rgb(11, 8, 8);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #678603;
+}
+
+.submit-btn:focus {
+  outline: none;
+}
+
