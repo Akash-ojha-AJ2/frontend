@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./Navbar.css";
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext'; // Assuming you have AuthContext for managing login state
+ import Cookies from 'js-cookie';
 
 
 const Navbar = () => {
@@ -9,10 +10,30 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { logout } = useAuth(); // Get the logout function from AuthContext
 
-  const handleLogout = () => {
-    Cookies.remove('teacherId');
-    navigate('/login');
-  };
+ 
+
+const handleLogout = async () => {
+  try {
+    // Send a logout request to the server
+    const response = await fetch('https://attendance-v2dt.onrender.com/api/logout', {
+      method: 'POST',
+      credentials: 'include', // Include cookies in the request
+    });
+
+    if (response.ok) {
+      // Clear cookies or local storage
+      Cookies.remove('token', { path: '/' });
+      Cookies.remove('teacherId', { path: '/' });
+
+      // Redirect to the login page
+      window.location.href = '/login';
+    } else {
+      console.error('Failed to logout');
+    }
+  } catch (error) {
+    console.error('Error during logout:', error);
+  }
+};
 
 
   return (
