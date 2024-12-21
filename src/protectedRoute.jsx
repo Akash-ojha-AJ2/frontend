@@ -1,11 +1,16 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAuth } from './AuthContext';
+import { Navigate, Outlet } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const ProtectedRoute = ({ children }) => {
-    const { isAuthenticated } = useAuth();
+  const isAuthenticated = Cookies.get('teacherId'); // Check for token/cookie
 
-    return isAuthenticated ? children : <Navigate to="/login" replace />;
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children || <Outlet />;
 };
 
 export default ProtectedRoute;
+
