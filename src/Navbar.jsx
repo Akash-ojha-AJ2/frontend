@@ -9,23 +9,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { logout } = useAuth(); // Get the logout function from AuthContext
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('https://attendance-v2dt.onrender.com/api/teachers/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
+ const handleLogout = () => {
+  // Remove the teacherId cookie
+  Cookies.remove('teacherId');
+  // Optionally, you can redirect to the login page after logging out
+  window.location.href = '/login';
+};
 
-      if (response.ok) {
-        logout(); // Update authentication state
-        navigate('/login'); // Redirect to login page after successful logout
-      } else {
-        console.error('Logout failed.');
-      }
-    } catch (error) {
-      console.error('Error during logout:', error);
-    }
-  };
 
   return (
     <nav className="navbar">
