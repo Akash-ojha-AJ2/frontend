@@ -25,6 +25,7 @@ const LoginPage = () => {
 
             if (response.ok) {
                 const data = await response.json(); // Parse JSON response
+                localStorage.setItem('token', data.token); // Store the JWT token
                 Cookies.set('teacherId', data.teacherId, { expires: 1 }); // Save teacherId in a cookie
                 login(); // Update the authentication state
                 navigate('/home'); // Redirect to home page
