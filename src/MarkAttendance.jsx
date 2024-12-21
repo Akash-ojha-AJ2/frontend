@@ -22,6 +22,7 @@ const MarkAttendance = () => {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
+               'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
             credentials: 'include', // Include session cookies
           }
@@ -84,6 +85,7 @@ const MarkAttendance = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
         credentials: 'include',
         body: JSON.stringify(attendanceData),
