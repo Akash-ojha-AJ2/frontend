@@ -11,56 +11,44 @@ const AddStudent = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const formData = {
-      studentName,
-      email,
-      phoneNo,
-      rollNo,
-      branch,
-      semester,
-    };
-
-    try {
-      const response = await fetch('https://attendance-v2dt.onrender.com/api/student/addstudent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-           Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify(formData),
-        credentials: 'include',
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSuccessMessage(data.message);
-
-        // Close the message after 3 seconds
-        setTimeout(() => {
-          setSuccessMessage('');
-        }, 3000);
-
-        // Clear the form after success
-        setStudentName('');
-        setEmail('');
-        setPhoneNo('');
-        setRollNo('');
-        setBranch('');
-        setSemester('');
-        setErrorMessage('');
-      } else {
-        setErrorMessage(data.message || 'Something went wrong');
-        setSuccessMessage('');
-      }
-    } catch (error) {
-      setErrorMessage('Network error. Please try again later.');
-      setSuccessMessage('');
-    }
+  const formData = {
+    studentName,
+    email,
+    phoneNo,
+    rollNo,
+    branch,
+    semester,
   };
+
+  try {
+    const response = await fetch('https://attendance-v2dt.onrender.com/api/student/addstudent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log('Success:', data);
+      setSuccessMessage(data.message);
+      // Clear form and messages
+    } else {
+      console.error('Error Response:', data);
+      setErrorMessage(data.message || 'Something went wrong');
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+    setErrorMessage('Network error. Please try again later.');
+  }
+};
+
 
   // Close the success message manually
   const handleCloseSuccessMessage = () => {
