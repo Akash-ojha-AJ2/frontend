@@ -13,18 +13,17 @@ const Navbar = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Token in header
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
         credentials: 'include',
       });
 
       if (response.ok) {
-        // Clear token and redirect to login
         localStorage.removeItem('token');
         localStorage.removeItem('teacherId');
         Cookies.remove('token', { path: '/' });
         Cookies.remove('teacherId', { path: '/' });
-        navigate('/login'); // Redirect to login page
+        navigate('/login');
       } else {
         const errorData = await response.json();
         console.error('Logout failed:', errorData.message || 'Unknown error');
@@ -34,7 +33,8 @@ const Navbar = () => {
     }
   };
 
-   const handleLinkClick = () => {
+  // Function to close the menu on link click
+  const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
@@ -45,19 +45,28 @@ const Navbar = () => {
           <h1>MARK</h1>
           <h2>MY ATTENDANCE</h2>
         </div>
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           ☰
         </button>
       </div>
       <div className={`navbar-right ${menuOpen ? 'show' : ''}`}>
         <ul className="navbar-links">
-          <li><Link to="/home" className="navbar-link">Home</Link></li>
-          <li><Link to="/addStudent" className="navbar-link">Add Student</Link></li>
-          <li><Link to="/viewstudentform" className="navbar-link">View Student Data</Link></li>
-          <li><Link to="/attendance" className="navbar-link">Attendance</Link></li>
-          <li><Link to="/delete-attendance" className="navbar-link">Delete Attendance</Link></li>
+          <li><Link to="/home" className="navbar-link" onClick={handleLinkClick}>Home</Link></li>
+          <li><Link to="/addStudent" className="navbar-link" onClick={handleLinkClick}>Add Student</Link></li>
+          <li><Link to="/viewstudentform" className="navbar-link" onClick={handleLinkClick}>View Student Data</Link></li>
+          <li><Link to="/attendance" className="navbar-link" onClick={handleLinkClick}>Attendance</Link></li>
+          <li><Link to="/delete-attendance" className="navbar-link" onClick={handleLinkClick}>Delete Attendance</Link></li>
           <li>
-            <button onClick={handleLogout} className="navbar-link logout-button">
+            <button
+              onClick={() => {
+                handleLogout();
+                handleLinkClick();
+              }}
+              className="navbar-link logout-button"
+            >
               Logout
             </button>
           </li>
@@ -68,5 +77,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
 
