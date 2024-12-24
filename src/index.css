@@ -107,52 +107,60 @@ html, body {
   .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
   }
 
-  /* Hide navbar links on mobile */
+  /* Initially hide the navbar links */
   .navbar-right {
-    display: none; /* Hide links initially */
+    display: none;
     flex-direction: column;
     width: 100%;
     background-color: #094b03;
     position: absolute;
-    top: 60px; /* Just below the navbar */
+    top: 60px; /* Adjust this value based on your navbar height */
     left: 0;
     padding: 10px 0;
+    z-index: 100;
   }
 
-  /* Show navbar links when toggled */
+  /* Show links when the menu is toggled */
   .navbar-right.show {
     display: flex;
   }
 
   .navbar-links {
     flex-direction: column;
+    align-items: center;
     width: 100%;
   }
 
   .navbar-link {
-    display: flex;
+    display: block;
     margin: 10px 0;
     text-align: center;
     width: 100%;
+    padding: 10px 0;
+    color: white;
+    text-decoration: none;
+  }
+
+  .navbar-link:hover {
+    background-color: #04ff3e;
   }
 
   /* Menu Toggle button styling */
   .menu-toggle {
-    
     display: block;
     background: none;
     border: none;
-    color: rgb(255, 255, 255);
+    color: #fff;
     font-size: 24px;
     cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px; /* Place it at the top right corner */
   }
 
   .menu-toggle:hover {
     color: #04ff3e;
   }
 }
+
