@@ -34,6 +34,10 @@ const Navbar = () => {
     }
   };
 
+   const handleLinkClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
