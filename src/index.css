@@ -1,9 +1,9 @@
-/* Prevent horizontal scrolling */
+
 html, body {
   overflow-x: hidden;
 }
 
-/* Other existing styles for body and html */
+
 html, body {
   height: 100%;
   padding: 0;
@@ -12,7 +12,7 @@ html, body {
   background: linear-gradient(to right, #3a7d44, #a6bf3a);
 }
 
-/* General styles for the navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -37,7 +37,7 @@ html, body {
 }
 
 .logo {
-  height: 40px; /* Adjust the size of your logo */
+  height: 40px; 
   margin-right: 20px;
 }
 
@@ -47,22 +47,22 @@ html, body {
 }
 
 .navbar-right ul {
-  display: flex; /* To display the links in a row */
-  list-style-type: none; /* Remove bullet points from the list */
+  display: flex;
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
 .navbar-link {
-  color: white; /* Set link color to white */
-  margin-right: 20px; /* Space between links */
+  color: white; 
+  margin-right: 20px; 
   text-decoration: none;
-  font-size: 16px; /* Set font size to match the logout button */
+  font-size: 16px;
 }
 
 .navbar-link:hover {
   text-decoration: underline;
-  color: #04ff3e; /* Optional: Change color on hover to orange */
+  color: #04ff3e;
 }
 
 .logout-button {
@@ -70,8 +70,8 @@ html, body {
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 16px; /* Set the font size of the logout button */
-  margin-left: 20px; /* Space between logout button and the last link */
+  font-size: 16px; 
+  margin-left: 20px; 
 }
 
 .logo{
@@ -94,62 +94,56 @@ html, body {
 }
 
 .logout-button:hover {
-  color: #04ff3e; /* Change color on hover */
+  color: #04ff3e; 
 }
 
-/* Content area to avoid overlap with navbar */
+
 .content {
   margin-top: 60px;
 }
 
-/* Responsive Styles for small screens (max-width 700px) */
+
 @media (max-width: 700px) {
   .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
   }
 
-  /* Initially hide the navbar links */
+  
   .navbar-right {
     display: none;
     flex-direction: column;
     width: 100%;
     background-color: #094b03;
     position: absolute;
-    top: 60px; /* Adjust this value based on your navbar height */
+    top: 60px; 
     left: 0;
     padding: 10px 0;
-    z-index: 100;
   }
 
-  /* Show links when the menu is toggled */
+
   .navbar-right.show {
     display: flex;
   }
 
   .navbar-links {
     flex-direction: column;
-    align-items: center;
     width: 100%;
   }
 
   .navbar-link {
-    display: block;
+    display: flex;
     margin: 10px 0;
     text-align: center;
     width: 100%;
-    padding: 10px 0;
-    color: white;
-    text-decoration: none;
+   
   }
 
   .navbar-link:hover {
     background-color: #04ff3e;
   }
 
-  /* Menu Toggle button styling */
+
   .menu-toggle {
     display: block;
     background: none;
